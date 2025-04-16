@@ -1,0 +1,274 @@
+/* 搜索按钮样式 */
+.search-toggle-btn {
+    bottom: 32px;
+    right: 32px;
+}
+
+/* 搜索框容器 */
+.search-container {
+    width: 100%; /* 容器宽度占父容器的100% */
+    max-width: 580px; /* 最大宽度为580px */
+    /* 调整背景色，使其更白且更不透明 */
+    background: rgba(100, 100, 100, 0.15);
+    /* 增强模糊效果 */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 16px; /* 圆角边框 */
+    /* 调整内边距使搜索框看起来更加舒适 */
+    padding: 12px 16px;
+    display: flex; /* 使用 Flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    gap: 12px; /* 子元素之间的间距 */
+    /* 调整边框颜色使其更明显 */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* 更新玻璃态渐变效果，使其更亮 */
+    background-image: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.25) 0%,  
+        rgba(255, 255, 255, 0.15) 100%
+    );
+    /* 优化阴影效果 */
+    box-shadow: 
+        0 4px 24px rgba(0, 0, 0, 0.1),
+        0 1px 2px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s var(--transition-curve); /* 所有属性变化的过渡效果 */
+    position: relative; /* 设为相对定位，允许绝对定位的子元素 */
+    cursor: text; /* 鼠标悬停时显示文本输入的光标 */
+}
+
+/* 搜索框聚焦状态样式 */
+.search-container.focused {
+    /* 微调上移距离和缩放比例 */
+    transform: translateY(-1px);
+    /* 聚焦时背景更白 */
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* 搜索框悬浮时样式（非聚焦状态） */
+.search-container:hover:not(.focused) {
+    transform: translateY(-1px);
+    /* 悬浮时背景更白 */
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* 搜索框输入框样式 */
+.search-input {
+    width: 100%; /* 宽度为100% */
+    border: none; /* 无边框 */
+    background: transparent; /* 背景透明 */
+    /* 调整字体大小和样式 */
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--primary-text); /* 字体颜色使用 --primary-text */
+    outline: none; /* 无外部轮廓 */
+    padding: 0; /* 无内边距 */
+    /* 优化字间距 */
+    letter-spacing: 0.01em;
+    z-index: 1; /* 设置堆叠层级 */
+}
+
+/* 输入框的占位符样式 */
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    /* 调整占位符透明度 */
+    opacity: 0.8;
+    transition: opacity 0.3s ease; /* 占位符透明度的过渡效果 */
+}
+
+/* 输入框聚焦时占位符透明度 */
+.search-input:focus::placeholder {
+    opacity: 0.8; /* 聚焦时占位符变得更透明 */
+}
+
+/* 搜索引擎图标容器 */
+.search-engine-wrapper {
+    position: relative; /* 设为相对定位 */
+    z-index: 100; /* 提高堆叠层级 */
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-right: 12px; /* 增加右侧间距 */
+}
+
+/* 搜索引擎图标容器和下拉菜单的样式设置为允许事件触发 */
+.search-engine-wrapper,
+.search-engine-wrapper *,
+.search-engine-dropdown,
+.search-engine-dropdown * {
+    pointer-events: auto; /* 允许鼠标事件 */
+}
+
+/* 搜索引擎图标样式 */
+.search-engine-icon {
+    width: 28px; /* 增加宽度 */
+    height: 28px; /* 增加高度 */
+    padding: 2px; /* 保持内边距 */
+    border: none; /* 无边框 */
+    background: none; /* 无背景 */
+    cursor: pointer; /* 鼠标为点击状态 */
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+    opacity: 0.9; /* 提高初始透明度 */
+    transition: all 0.2s ease; /* 动画过渡效果 */
+    border-radius: 50%; /* 添加圆形边框 */
+}
+
+/* 搜索引擎图标悬浮时的效果 */
+.search-engine-icon:hover {
+    opacity: 1; /* 悬浮时透明度为1 */
+    transform: scale(1.05); /* 悬浮时轻微放大 */
+    background-color: rgba(255, 255, 255, 0.1); /* 添加轻微背景 */
+}
+
+/* 搜索引擎图标中的图片样式 */
+.search-engine-icon img {
+    width: 24px; /* 图片宽度为24px */
+    height: 24px; /* 图片高度为24px */
+    object-fit: contain; /* 保持图片比例 */
+    /* 添加微弱发光效果 */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* 添加默认搜索图标的样式 */
+.search-engine-icon svg {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* 搜索引擎选项中的默认搜索图标样式 */
+.default-search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.default-search-icon svg {
+    width: 32px;
+    height: 32px;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+}
+
+/* 搜索引擎下拉菜单样式 */
+.search-engine-dropdown {
+    position: absolute;
+    background: rgba(30, 30, 30, 0.3);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: all 0.2s var(--transition-curve);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    margin-top: 0;
+}
+
+/* 显示下拉菜单的类 */
+.search-engine-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* 自定义滚动条样式 */
+.search-engine-dropdown::-webkit-scrollbar {
+    width: 6px; /* 滚动条宽度 */
+}
+
+.search-engine-dropdown::-webkit-scrollbar-track {
+    background: transparent; /* 滚动条轨道背景透明 */
+}
+
+.search-engine-dropdown::-webkit-scrollbar-thumb {
+    background-color: var(--glass-border); /* 滚动条的滑块颜色 */
+    border-radius: 3px; /* 滑块圆角 */
+}
+
+.search-engine-dropdown::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(120, 120, 128, 0.4); /* 悬浮时滑块颜色变暗 */
+}
+
+/* 搜索引擎选项样式 */
+.search-engine-option {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    border-radius: 12px;
+    background: transparent;
+    width: 44px;
+    height: 44px;
+}
+
+/* 搜索引擎选项悬浮效果 */
+.search-engine-option:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 搜索引擎选项中的图标样式 */
+.search-engine-option img,
+.search-engine-option .default-search-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+/* 选中状态的样式 */
+.search-engine-option[data-selected="true"] {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 选中状态右侧的对号标识 */
+.search-engine-option[data-selected="true"]::after {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    color: var(--primary-text);
+    opacity: 0.9;
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 确保搜索框内的所有区域都能触发输入框聚焦 */
+.search-container * {
+    pointer-events: none; /* 禁止事件触发 */
+}
+
+/* 恢复搜索引擎图标和下拉菜单的点击事件 */
+.search-engine-wrapper,
+.search-engine-wrapper *,
+.search-engine-dropdown,
+.search-engine-dropdown * {
+    pointer-events: auto; /* 允许事件触发 */
+}
+
+/* 添加网格布局容器 */
+.search-engine-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    padding: 4px;
+}
+
+/* 添加点击效果 */
+.search-engine-option:active {
+    transform: scale(0.98);
+}

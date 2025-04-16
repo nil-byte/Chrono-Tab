@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "chrono Tab (极简时钟)",
+  "version": "1.0",
+  "description": "【极简时钟】打造优雅的新标签页体验 | 精美时钟显示 + 高清壁纸 + 多搜索引擎 | 简约而不简单的标签页管理工具",
+  "permissions": [
+    "storage",
+    "alarms",
+    "search"
+  ],
+  "optional_host_permissions": [
+    "https://api.unsplash.com/photos/*",
+    "https://pixabay.com/api/*",
+    "https://api.pexels.com/v1/*"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background-worker.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' https://api.unsplash.com https://pixabay.com https://api.pexels.com;"
+  },
+  "web_accessible_resources": [{
+    "resources": [
+      "welcome.html",
+      "scripts/welcome.js",
+      "assets/backgrounds/Background1.png"
+    ],
+    "matches": ["<all_urls>"]
+  }]
+} 

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎使用 - 极简时钟新标签页</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .welcome-page {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #1d1d1f;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #484848;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .privacy-notice {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .privacy-notice h2 {
+            color: #1d1d1f;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .start-btn {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            margin-top: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .start-btn:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        /* 添加功能说明样式 */
+        .features-guide {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .features-guide h2 {
+            color: #1d1d1f;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .feature-list {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+        
+        .feature-icon {
+            font-size: 1.5em;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .feature-item p {
+            margin: 0;
+            font-size: 1em;
+            color: #333;
+        }
+        
+        kbd {
+            background-color: #f8f9fa;
+            border: 1px solid #d1d5db;
+            border-radius: 3px;
+            box-shadow: 0 1px 1px rgba(0,0,0,.12);
+            color: #666;
+            display: inline-block;
+            font-size: 0.9em;
+            font-family: Monaco, Consolas, monospace;
+            line-height: 1;
+            padding: 2px 6px;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-page">
+        <h1>欢迎使用极简时钟新标签页</h1>
+        <p>感谢您安装我们的扩展！这是一个优雅实用的新标签页扩展，为您提供精美时钟显示、多搜索引擎支持、自定义背景图片和实时天气信息等功能。</p>
+        
+        <!-- 添加功能说明区域 -->
+        <div class="features-guide">
+            <h2>快捷操作指南</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🕐</span>
+                    <p>点击时钟可切换12/24小时制</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📅</span>
+                    <p>点击日期可切换显示格式</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🌤</span>
+                    <p>点击天气信息可立即刷新数据</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⌨️</span>
+                    <p>按 <kbd>/</kbd> 快速打开搜索框</p>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">⌨️</span>
+                    <p>按 <kbd>ESC</kbd> 退出搜索</p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" class="start-btn" id="startBtn">开始使用</a>
+        
+        <div class="privacy-notice">
+            <h2>隐私说明</h2>
+            <p>我们重视您的隐私，所有设置都保存在本地。</p>
+            <a href="https://nil-byte.github.io/ChronoTab-privacy-policy/" target="_blank">查看完整隐私政策</a>
+        </div>
+    </div>
+    
+    <script src="scripts/welcome.js"></script>
+</body>
+</html> 

@@ -1,0 +1,186 @@
+/* 布局相关样式 */
+.layout-container {
+    width: min(100% - 48px, 720px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 24px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.6s var(--transition-curve);
+}
+
+/* 搜索状态下的布局 */
+.layout-container.search-active {
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+/* 时钟容器样式 */
+.clock-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.clock-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    padding: 12px 40px;
+    transition: transform 0.3s var(--transition-curve);
+}
+
+.clock-wrapper:hover {
+    transform: translateY(-2px);
+}
+
+/* 优化时钟文字样式 */
+.clock {
+    font-size: 120px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--primary-text);
+    user-select: none;
+    cursor: default;
+    opacity: 0.95;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+    line-height: 1;
+    margin-bottom: 0px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 更新日期样式 */
+.date {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--primary-text);
+    opacity: 0.7;
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s var(--transition-curve), opacity 0.3s var(--transition-curve);
+}
+
+/* 添加日期切换动画 */
+.date-switch {
+    animation: dateSwitch 0.3s var(--transition-curve);
+}
+
+@keyframes dateSwitch {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    51% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 添加日期悬浮效果 */
+.date:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 按钮悬浮效果 */
+.search-toggle-btn:hover,.refresh-bg-btn:hover,.settings-btn:hover{
+    opacity: 1;
+    box-shadow: 
+        0 4px 20px var(--shadow-color),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px var(--glass-highlight);
+    transform: scale(var(--btn-hover-scale));
+}
+
+/* 按钮样式 */
+.search-toggle-btn,.refresh-bg-btn,.settings-btn{
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    background: var(--primary-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    color: var(--primary-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: all 0.3s var(--transition-curve);
+    box-shadow: 
+        0 2px 12px var(--shadow-color),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 0.5px var(--glass-highlight);
+    z-index: 999;
+}
+
+/* 按钮图标动画 */
+.search-toggle-btn svg,.refresh-bg-btn svg,.settings-btn svg {
+    transition: transform 0.6s var(--transition-curve);
+}
+
+/* 按钮点击效果 */
+.search-toggle-btn:active,.refresh-bg-btn:active,.settings-btn:active {
+    transform: scale(var(--btn-active-scale));
+}
+
+/* 搜索框默认隐藏 */
+.search-container {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.4s var(--transition-curve);
+    margin-top: 12px;
+}
+
+/* 搜索框显示状态 */
+.search-container.show {
+    opacity: 0.9;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* 在更小的屏幕上进一步调整 */
+@media screen and (max-height: 400px) {
+    .search-toggle-btn {
+        top: 16px;
+        right: 16px;
+    }
+    .settings-btn {
+        bottom: 16px;
+        right: 16px;
+    }
+    .refresh-bg-btn {
+        top: 16px;
+        left: 16px;
+    }
+} 

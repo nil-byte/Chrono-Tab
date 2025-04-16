@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新标签页</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="styles/refresh.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <!-- 添加动态光晕 -->
+    <div class="light-orb"></div>
+    
+    <!-- 搜索按钮 -->
+    <button class="search-toggle-btn" id="searchToggleBtn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <!-- 在 body 标签下添加刷新背景按钮 -->
+    <button class="refresh-bg-btn" id="refreshBgBtn" title="刷新背景图片">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/>
+        </svg>
+    </button>
+    
+    <div class="layout-container">
+        <!-- 时钟容器 -->
+        <div class="clock-container">
+            <div class="clock-wrapper">
+                <div class="clock" id="clock">00:00</div>
+                <div class="date" id="date">Monday, January 01</div>
+            </div>
+        </div>
+        
+        <!-- 搜索框容器 -->
+        <div class="search-container" id="searchContainer">
+            <div class="search-engine-wrapper">
+                <button class="search-engine-icon" id="searchEngineIcon">
+                    <img src="assets/icons/google.png" alt="搜索引擎图标">
+                </button>
+                <div class="search-engine-dropdown">
+                    <div class="search-engine-grid">
+                        <div class="search-engine-option" data-engine="default">
+                            <div class="default-search-icon">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+                                    <path d="M20 20L16.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="11" cy="11" r="3" fill="currentColor" opacity="0.2"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="search-engine-option" data-engine="google">
+                            <img src="assets/icons/google.png" alt="Google">
+                        </div>
+                        <div class="search-engine-option" data-engine="bing">
+                            <img src="assets/icons/bing.png" alt="必应">
+                        </div>
+                        <div class="search-engine-option" data-engine="baidu">
+                            <img src="assets/icons/baidu.png" alt="百度">
+                        </div>
+                        <div class="search-engine-option" data-engine="duckduckgo">
+                            <img src="assets/icons/duckduckgo.png" alt="DuckDuckGo">
+                        </div>
+                        <div class="search-engine-option" data-engine="yahoo">
+                            <img src="assets/icons/yahoo.png" alt="Yahoo!">
+                        </div>
+                        <div class="search-engine-option" data-engine="yandex">
+                            <img src="assets/icons/yandex.png" alt="Yandex">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" class="search-input" id="searchInput">
+        </div>
+    </div>
+
+    <!-- 设置按钮 -->
+    <button class="settings-btn" id="settingsBtn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.0625 1.5C7.75184 1.5 7.5 1.75184 7.5 2.0625V2.76375C7.5 3.02272 7.31674 3.24272 7.06535 3.30851C6.74827 3.39075 6.44085 3.49909 6.14535 3.63195C5.91761 3.73321 5.65201 3.69321 5.47576 3.51697L5.00444 3.04565C4.78394 2.82515 4.42606 2.82515 4.20556 3.04565L3.04565 4.20556C2.82515 4.42606 2.82515 4.78394 3.04565 5.00444L3.51697 5.47576C3.69321 5.65201 3.73321 5.91761 3.63195 6.14535C3.49909 6.44085 3.39075 6.74827 3.30851 7.06535C3.24272 7.31674 3.02272 7.5 2.76375 7.5H2.0625C1.75184 7.5 1.5 7.75184 1.5 8.0625V9.9375C1.5 10.2482 1.75184 10.5 2.0625 10.5H2.76375C3.02272 10.5 3.24272 10.6833 3.30851 10.9346C3.39075 11.2517 3.49909 11.5591 3.63195 11.8546C3.73321 12.0824 3.69321 12.348 3.51697 12.5242L3.04565 12.9956C2.82515 13.2161 2.82515 13.5739 3.04565 13.7944L4.20556 14.9544C4.42606 15.1749 4.78394 15.1749 5.00444 14.9544L5.47576 14.483C5.65201 14.3068 5.91761 14.2668 6.14535 14.3681C6.44085 14.5009 6.74827 14.6092 7.06535 14.6915C7.31674 14.7573 7.5 14.9773 7.5 15.2362V15.9375C7.5 16.2482 7.75184 16.5 8.0625 16.5H9.9375C10.2482 16.5 10.5 16.2482 10.5 15.9375V15.2362C10.5 14.9773 10.6833 14.7573 10.9346 14.6915C11.2517 14.6092 11.5591 14.5009 11.8546 14.3681C12.0824 14.2668 12.348 14.3068 12.5242 14.483L12.9956 14.9544C13.2161 15.1749 13.5739 15.1749 13.7944 14.9544L14.9544 13.7944C15.1749 13.5739 15.1749 13.2161 14.9544 12.9956L14.483 12.5242C14.3068 12.348 14.2668 12.0824 14.3681 11.8546C14.5009 11.5591 14.6092 11.2517 14.6915 10.9346C14.7573 10.6833 14.9773 10.5 15.2362 10.5H15.9375C16.2482 10.5 16.5 10.2482 16.5 9.9375V8.0625C16.5 7.75184 16.2482 7.5 15.9375 7.5H15.2362C14.9773 7.5 14.7573 7.31674 14.6915 7.06535C14.6092 6.74827 14.5009 6.44085 14.3681 6.14535C14.2668 5.91761 14.3068 5.65201 14.483 5.47576L14.9544 5.00444C15.1749 4.78394 15.1749 4.42606 14.9544 4.20556L13.7944 3.04565C13.5739 2.82515 13.2161 2.82515 12.9956 3.04565L12.5242 3.51697C12.348 3.69321 12.0824 3.73321 11.8546 3.63195C11.5591 3.49909 11.2517 3.39075 10.9346 3.30851C10.6833 3.24272 10.5 3.02272 10.5 2.76375V2.0625C10.5 1.75184 10.2482 1.5 9.9375 1.5H8.0625ZM9 12C10.6569 12 12 10.6569 12 9C12 7.34315 10.6569 6 9 6C7.34315 6 6 7.34315 6 9C6 10.6569 7.34315 12 9 12Z" fill="currentColor"/>
+        </svg>
+    </button>
+
+    <!-- 设置面板 -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h2>设置</h2>
+                <button class="close-btn" id="closeSettings">×</button>
+            </div>
+            
+            <div class="settings-section">
+                <h3>背景图片设置</h3>
+                
+                <!-- 添加自动刷新设置 -->
+                <div class="setting-item">
+                    <label>自动更新间隔</label>
+                    <select id="autoRefreshInterval" class="select-dropdown">
+                        <option value="never">从不</option>
+                        <option value="60">每60分钟</option>
+                        <option value="120">每120分钟</option>
+                        <option value="daily">每天</option>
+                    </select>
+                </div>
+                
+                <!-- 添加遮罩透明度控制 -->
+                <div class="setting-item">
+                    <label>背景遮罩透明度</label>
+                    <div class="slider-container">
+                        <input type="range" 
+                            id="overlayOpacity" 
+                            class="opacity-slider" 
+                            min="0" 
+                            max="80" 
+                            value="50"
+                            step="1">
+                        <div class="slider-value"></div>
+                    </div>
+                </div>
+                
+                <!-- 修改背景图片来源选择 -->
+                <div class="setting-item">
+                    <label>图片来源</label>
+                    <select id="bgImageSource" class="select-dropdown">
+                        <option value="none">本地图片</option>
+                        <option value="unsplash">Unsplash</option>
+                        <option value="pixabay">Pixabay</option>
+                        <option value="pexels">Pexels</option>
+                    </select>
+                </div>
+                
+                <!-- API密钥设置 -->
+                <div class="setting-item api-key-item" id="unsplashApiKey">
+                    <label>Unsplash API Key</label>
+                    <div class="api-input-container">
+                        <input type="password" class="api-input" placeholder="输入API Key" data-api="unsplash">
+                        <button class="api-toggle-visibility" title="显示/隐藏密钥">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path class="eye-open" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                <path class="eye-closed" d="M12 6.5c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53-1.73-4.39-6-7.5-11-7.5-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.66 11.31 6.5 12 6.5zm-1.07 1.14L13 9.71c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14zM2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45 2.01 3.87zm7.5 7.5l2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13zm-3.4-3.4l1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="https://unsplash.com/developers" target="_blank" class="api-link">获取API Key</a>
+                </div>
+                
+                <div class="setting-item api-key-item" id="pixabayApiKey">
+                    <label>Pixabay API Key</label>
+                    <div class="api-input-container">
+                        <input type="password" class="api-input" placeholder="输入API Key" data-api="pixabay">
+                        <button class="api-toggle-visibility" title="显示/隐藏密钥">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path class="eye-open" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                <path class="eye-closed" d="M12 6.5c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53-1.73-4.39-6-7.5-11-7.5-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.66 11.31 6.5 12 6.5zm-1.07 1.14L13 9.71c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14zM2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45 2.01 3.87zm7.5 7.5l2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13zm-3.4-3.4l1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="https://pixabay.com/api/docs/" target="_blank" class="api-link">获取API Key</a>
+                </div>
+                
+                <div class="setting-item api-key-item" id="pexelsApiKey">
+                    <label>Pexels API Key</label>
+                    <div class="api-input-container">
+                        <input type="password" class="api-input" placeholder="输入API Key" data-api="pexels">
+                        <button class="api-toggle-visibility" title="显示/隐藏密钥">
+                            <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path class="eye-open" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/>
+                                <path class="eye-closed" d="M12 6.5c3.79 0 7.17 2.13 8.82 5.5-.59 1.22-1.42 2.27-2.41 3.12l1.41 1.41c1.39-1.23 2.49-2.77 3.18-4.53-1.73-4.39-6-7.5-11-7.5-1.27 0-2.49.2-3.64.57l1.65 1.65C10.66 6.66 11.31 6.5 12 6.5zm-1.07 1.14L13 9.71c.57.25 1.03.71 1.28 1.28l2.07 2.07c.08-.34.14-.7.14-1.07C16.5 9.01 14.48 7 12 7c-.37 0-.72.05-1.07.14zM2.01 3.87l2.68 2.68C3.06 7.83 1.77 9.53 1 11.5 2.73 15.89 7 19 12 19c1.52 0 2.98-.29 4.32-.82l3.42 3.42 1.41-1.41L3.42 2.45 2.01 3.87zm7.5 7.5l2.61 2.61c-.04.01-.08.02-.12.02-1.38 0-2.5-1.12-2.5-2.5 0-.05.01-.08.01-.13zm-3.4-3.4l1.75 1.75c-.23.55-.36 1.15-.36 1.78 0 2.48 2.02 4.5 4.5 4.5.63 0 1.23-.13 1.77-.36l.98.98c-.88.24-1.8.38-2.75.38-3.79 0-7.17-2.13-8.82-5.5.7-1.43 1.72-2.61 2.93-3.53z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <a href="https://www.pexels.com/api/" target="_blank" class="api-link">获取API Key</a>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>界面设置</h3>
+                <div class="setting-item">
+                    <label>
+                        <span>显示搜索按钮<span class="icon"></span></span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="showSearchBtn" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <span>显示刷新按钮<span class="icon"></span></span>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="showRefreshBtn" checked>
+                            <span class="toggle-slider"></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h3>隐私说明</h3>
+                <p>本扩展仅在本地保存您的设置，不会上传任何数据。详见<a href="https://nil-byte.github.io/ChronoTab-privacy-policy/" target="_blank">隐私政策</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 修改脚本加载顺序 -->
+    <script src="scripts/storage.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/layout.js"></script>
+    <script src="scripts/clock.js"></script>
+    <script src="scripts/search.js"></script>
+    <script src="scripts/settings.js"></script>
+</body>
+</html> 

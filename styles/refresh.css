@@ -1,0 +1,19 @@
+/* 刷新背景按钮样式 */
+.refresh-bg-btn {
+    top: 32px;
+    left: 32px;
+}
+
+/* 添加刷新动画 */
+.refresh-bg-btn.refreshing svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

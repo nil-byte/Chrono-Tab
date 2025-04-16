@@ -1,0 +1,8 @@
+# 浏览器插件应该忽略的文件
+* manifest.json
+* styles
+* scripts
+* README.md
+* .cursorrules
+/assets
+.DS_Store  
